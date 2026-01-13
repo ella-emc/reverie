@@ -13,14 +13,23 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final formKey = GlobalKey<FormState>();
+
+  // Field controllers
   final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  bool isObscure = true;
+  final confirmPasswordController = TextEditingController();
+
+  // Variables
+  bool isPassObscure = true;
+  bool isConfirmPassObscure = true;
 
   @override
   void dispose() {
     usernameController.dispose();
+    emailController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -28,18 +37,18 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsetsGeometry.all(24),
+        padding: const EdgeInsetsGeometry.all(24),
         child: Form(
           key: formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Sign in to your account', style: GoogleFonts.playfairDisplay(
-                fontSize: 24,
-                color: AppPalette.primaryColor,
-                fontWeight: FontWeight.bold
-              )),
+              Text('Create an account', style: GoogleFonts.playfairDisplay(
+                  fontSize: 24,
+                  color: AppPalette.primaryColor,
+                  fontWeight: FontWeight.bold
+                )),
               const SizedBox(height: 40),
           
               // Username form field
@@ -56,6 +65,20 @@ class _SignupPageState extends State<SignupPage> {
           
               SizedBox(height: 24),
           
+              // Email form field
+              Text('Email', style: GoogleFonts.dmSans(
+                color: AppPalette.textColor,
+                fontSize: 12,
+              )),
+              SizedBox(height: 4),
+              AuthField(
+                placeholder: 'example@domain.com',
+                suffixIcon: const Icon(Icons.email, color: AppPalette.purpleColor, size: 16),
+                controller: emailController,
+              ),
+          
+              SizedBox(height: 24),
+          
               // Password form field
               Text('Password', style: GoogleFonts.dmSans(
                 color: AppPalette.textColor,
@@ -64,17 +87,43 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(height: 4),
               AuthField(
                 placeholder: 'Your password',
-                obscureText: isObscure,
+                obscureText: isPassObscure,
                 controller: passwordController,
                 suffixIcon: IconButton(
                   icon: Icon(
-                    isObscure ? Icons.visibility_off : Icons.visibility,
+                    isPassObscure ? Icons.visibility : Icons.visibility_off,
                     color: AppPalette.purpleColor,
                     size: 16,
                   ),
                   onPressed: () {
                     setState(() {
-                      isObscure = !isObscure;
+                      isPassObscure = !isPassObscure;
+                    });
+                  },
+                ),
+              ),
+          
+              SizedBox(height: 24),
+          
+              // Confirm password form field
+              Text('Confirm password', style: GoogleFonts.dmSans(
+                color: AppPalette.textColor,
+                fontSize: 12,
+              )),
+              SizedBox(height: 4),
+              AuthField(
+                placeholder: 'Retype your password',
+                obscureText: isConfirmPassObscure,
+                controller: confirmPasswordController,
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    isConfirmPassObscure ? Icons.visibility : Icons.visibility_off,
+                    color: AppPalette.purpleColor,
+                    size: 16,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isConfirmPassObscure = !isConfirmPassObscure;
                     });
                   },
                 ),
@@ -82,19 +131,19 @@ class _SignupPageState extends State<SignupPage> {
           
               SizedBox(height: 40),
           
-              // Button
-              Button(buttonText: 'Sign in'),
+                            // Button
+              Button(buttonText: 'Create account'),
               SizedBox(height: 24),
               RichText(
                 text: TextSpan(
-                  text: 'Don\'t have an account yet?',
+                  text: 'Already have an account?',
                   style: GoogleFonts.dmSans(
                     color: AppPalette.textColor,
                     fontSize: 12,
                   ),
                   children: [
                     TextSpan(
-                      text: ' Create an account',
+                      text: ' Sign in',
                       style: GoogleFonts.dmSans(
                         color: AppPalette.primaryColor,
                         fontSize: 12,
