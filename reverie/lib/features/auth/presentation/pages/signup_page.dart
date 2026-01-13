@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reverie/core/navigation/route_builder.dart';
 import 'package:reverie/core/theme/app_palette.dart';
 import 'package:reverie/core/widgets/button.dart';
+import 'package:reverie/features/auth/presentation/pages/signin_page.dart';
 import 'package:reverie/features/auth/presentation/widgets/auth_field.dart';
 
 class SignupPage extends StatefulWidget {
@@ -130,28 +132,35 @@ class _SignupPageState extends State<SignupPage> {
               ),
           
               SizedBox(height: 40),
-          
                             // Button
               Button(buttonText: 'Create account'),
               SizedBox(height: 24),
-              RichText(
-                text: TextSpan(
-                  text: 'Already have an account?',
-                  style: GoogleFonts.dmSans(
-                    color: AppPalette.textColor,
-                    fontSize: 12,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: ' Sign in',
-                      style: GoogleFonts.dmSans(
-                        color: AppPalette.primaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    route_animate(SignInPage())
+                  );
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Already have an account?',
+                    style: GoogleFonts.dmSans(
+                      color: AppPalette.textColor,
+                      fontSize: 12,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: ' Sign in',
+                        style: GoogleFonts.dmSans(
+                          color: AppPalette.primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold
+                        )
                       )
-                    )
-                  ]
-                )
+                    ]
+                  )
+                ),
               )
             ],
           ),
