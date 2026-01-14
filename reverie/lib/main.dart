@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reverie/core/theme/theme.dart';
 import 'package:reverie/features/auth/presentation/pages/signin_page.dart';
+import 'package:reverie/landing.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Reverie',
       theme: AppTheme.lightThemeMode,
-      home: const SignInPage(),
+      home: const LandingPage(),
     );
   }
 }
