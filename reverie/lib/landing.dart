@@ -44,7 +44,11 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(height: 48),
             Button(buttonText: 'Sign in'),
             SizedBox(height: 20),
-            Button(buttonText: 'Create an account')
+            Button(
+              buttonText: 'Create an account', 
+              buttonColor: AppPalette.lightPurpleColor,
+              buttonTextColor: AppPalette.purpleColor,
+            )
           ],
         ),
       ),
