@@ -38,12 +38,13 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Color.fromRGBO(255, 255, 255, 1)),
       body: Padding(
         padding: const EdgeInsetsGeometry.all(24),
         child: Form(
           key: formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Create an account', style: GoogleFonts.playfairDisplay(
