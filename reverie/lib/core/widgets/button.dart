@@ -4,9 +4,13 @@ import 'package:reverie/core/theme/app_palette.dart';
 
 class Button extends StatelessWidget {
   final String buttonText;
+  final Color buttonColor;
+  final Color buttonTextColor;
   const Button({
     super.key,
-    required this.buttonText
+    required this.buttonText,
+    this.buttonColor = AppPalette.purpleColor,
+    this.buttonTextColor = AppPalette.backgroundColor
   });
 
   @override
@@ -16,7 +20,7 @@ class Button extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(AppPalette.purpleColor),
+          backgroundColor: WidgetStateProperty.all(buttonColor),
           padding: WidgetStateProperty.all(EdgeInsets.fromLTRB(24, 12, 24, 12)),
           shape: WidgetStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadiusGeometry.circular(16)
@@ -25,7 +29,7 @@ class Button extends StatelessWidget {
         child: Text(
           buttonText,
           style: GoogleFonts.dmSans(
-            color: AppPalette.backgroundColor,
+            color: buttonTextColor,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
