@@ -6,11 +6,14 @@ class Button extends StatelessWidget {
   final String buttonText;
   final Color buttonColor;
   final Color buttonTextColor;
+  final VoidCallback? onPressed;
+  
   const Button({
     super.key,
     required this.buttonText,
     this.buttonColor = AppPalette.purpleColor,
-    this.buttonTextColor = AppPalette.backgroundColor
+    this.buttonTextColor = AppPalette.backgroundColor,
+    this.onPressed
   });
 
   @override
@@ -18,7 +21,7 @@ class Button extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(buttonColor),
           padding: WidgetStateProperty.all(EdgeInsets.fromLTRB(24, 12, 24, 12)),

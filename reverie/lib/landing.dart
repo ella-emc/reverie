@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reverie/core/navigation/route_builder.dart';
 import 'package:reverie/core/theme/app_palette.dart';
 import 'package:reverie/core/widgets/button.dart';
+import 'package:reverie/features/auth/presentation/pages/signin_page.dart';
+import 'package:reverie/features/auth/presentation/pages/signup_page.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -21,6 +24,8 @@ class _LandingPageState extends State<LandingPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Image
+            Image.asset('assets/logo.png'),
+
             Text('Reverie', style: GoogleFonts.playfairDisplay(
               color: AppPalette.purpleColor,
               fontSize: 28,
@@ -42,12 +47,17 @@ class _LandingPageState extends State<LandingPage> {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 48),
-            Button(buttonText: 'Sign in'),
+            Button(buttonText: 'Sign in', onPressed: () {
+              Navigator.of(context).push(route_animate(SignInPage()));
+            },),
             SizedBox(height: 20),
             Button(
               buttonText: 'Create an account', 
               buttonColor: AppPalette.lightPurpleColor,
               buttonTextColor: AppPalette.purpleColor,
+              onPressed: () {
+                Navigator.of(context).push(route_animate(SignupPage()));
+              },
             )
           ],
         ),
